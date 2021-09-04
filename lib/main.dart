@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:submission_1/data/restaurant.dart';
+import 'package:submission_1/data/model/list_restaurant.dart';
 import 'package:submission_1/ui/detail_page.dart';
-import 'package:submission_1/ui/home_page.dart';
-import 'package:submission_1/ui/restaurant_list.dart';
-import 'package:submission_1/ui/search_page.dart';
+import 'package:submission_1/ui/home_page/home_page.dart';
+import 'package:submission_1/ui/categories_page/categories_page.dart';
+import 'package:submission_1/ui/search_page/search_page.dart';
 import 'package:submission_1/ui/splash_screen.dart';
 
 void main() {
@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
         SplashScreen.routeName: (context) => SplashScreen(),
         HomePage.routeName: (context) => HomePage(),
         SearchPage.routeName: (context) => SearchPage(),
-        RestaurantList.routeName: (context) => RestaurantList(ModalRoute.of(context)?.settings.arguments as String),
-        DetailPage.routeName: (context) => DetailPage(ModalRoute.of(context)?.settings.arguments as Restaurant)
+        CategoriesPage.routeName: (context) => CategoriesPage(ModalRoute.of(context)?.settings.arguments as String),
+        DetailPage.routeName: (context) => DetailPage(ModalRoute.of(context)?.settings.arguments as String)
       },
     );
   }
