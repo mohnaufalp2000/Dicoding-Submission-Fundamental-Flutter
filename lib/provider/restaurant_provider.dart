@@ -44,26 +44,4 @@ class RestaurantProvider extends ChangeNotifier {
     }
   }
 
-  // Future<dynamic> fetchSearchRestaurant(String query) async {
-  //   try {
-  //     _state = ResultState.Loading;
-  //     _query = query;
-  //     notifyListeners();
-  //     final restaurants = await apiService.searchRestaurant(query);
-  //     if (restaurants.restaurants.isEmpty) {
-  //       _state = ResultState.NoData;
-  //       notifyListeners();
-  //       return _message = 'Empty Data';
-  //     } else {
-  //       _state = ResultState.HasData;
-  //       notifyListeners();
-  //       return _listRestaurantResult = restaurants;
-  //     }
-  //   } catch (e) {
-  //     _state = ResultState.Error;
-  //     notifyListeners();
-  //     return _message = 'Error --> $e';
-  //   }
-  // }
-
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ErrorInformation extends StatelessWidget {
+class NotFound extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +10,7 @@ class ErrorInformation extends StatelessWidget {
       children: [
         Icon(Icons.error, size: 64, color: Color.fromRGBO(46, 71, 154, 1)),
         Text(
-          'Whoops!',
+          'Oh No!',
           style: TextStyle(
               fontFamily: 'Sansation',
               fontWeight: FontWeight.w700,
@@ -19,10 +19,9 @@ class ErrorInformation extends StatelessWidget {
         ),
         SizedBox(height: 12),
         Text(
-          'Slow or No Internet Connections',
+          'We are unable to find the data that you are looking for',
           style: TextStyle(fontFamily: 'Sansation', fontSize: 13),
         ),
-        SizedBox(height: 6),
       ],
     );
   }

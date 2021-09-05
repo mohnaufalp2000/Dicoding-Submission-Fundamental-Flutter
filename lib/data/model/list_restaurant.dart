@@ -2,8 +2,6 @@ import 'dart:convert';
 
 Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
 
-// String welcomeToJson(Welcome data) => json.encode(data.toJson());
-
 class Welcome {
   Welcome({
     required this.error,
@@ -33,13 +31,6 @@ class Welcome {
               restaurant.rating != null
             )),
       );
-
-  // Map<String, dynamic> toJson() => {
-  //     "error": error,
-  //     "message": message,
-  //     "count": count,
-  //     "restaurants": List<dynamic>.from(restaurants.map((x) => x.toJson())),
-  // };
 }
 
 class Restaurant {
@@ -68,12 +59,4 @@ class Restaurant {
         rating: json["rating"].toDouble(),
       );
 
-  // Map<String, dynamic> toJson() => {
-  //     "id": id,
-  //     "name": name,
-  //     "description": description,
-  //     "pictureId": pictureId,
-  //     "city": city,
-  //     "rating": rating,
-  // };
 }

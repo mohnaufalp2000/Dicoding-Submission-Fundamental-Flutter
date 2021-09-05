@@ -94,12 +94,6 @@ class CustomerReview {
         review: json["review"],
         date: dateValues.map[json["date"]],
       );
-
-  Map<String, dynamic> toJson() => {
-        "name": name,
-        "review": review,
-        "date": dateValues.reverse[date],
-      };
 }
 
 enum Date { THE_13_NOVEMBER_2019, THE_23_AGUSTUS_2021 }
@@ -125,10 +119,6 @@ class Menus {
             json["drinks"].map((x) => Category.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
-        "foods": List<dynamic>.from(foods.map((x) => x.toJson())),
-        "drinks": List<dynamic>.from(drinks.map((x) => x.toJson())),
-      };
 }
 
 class EnumValues<T> {

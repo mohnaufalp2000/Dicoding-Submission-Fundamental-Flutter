@@ -4,6 +4,7 @@ import 'package:submission_1/data/api/api_service.dart';
 import 'package:submission_1/data/model/search_restaurant.dart';
 import 'package:submission_1/provider/search_restaurant_provider.dart';
 import 'package:submission_1/ui/widget/error_information.dart';
+import 'package:submission_1/ui/widget/not_found.dart';
 import 'package:submission_1/ui/widget/rating.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -19,36 +20,70 @@ class _SearchPageState extends State<SearchPage> {
   String query = '';
 
   @override
+  void dispose() {
+    textController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
           child: ChangeNotifierProvider<SearchRestaurantProvider>(
               create: (_) => SearchRestaurantProvider(apiService: ApiService()),
-              child: Consumer<SearchRestaurantProvider>(
-                  builder: (context, state, _) {
-                if (state.state == ResultState.Loading) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (state.state == ResultState.HasData) {
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(24),
-                          child: TextField(
-                            controller: textController,
-                            onSubmitted: (value) {
-                              setState(() {
-                                query = value;
-                              });
-                              if (value != '') {
-                                state.fetchSearchRestaurant(value);
-                              } else {
-                                state.fetchSearchRestaurant('');
-                              }
-                            },
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(24, 24, 24, 0),
+                      child: Row(
+                        children: [
+                          InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Icon(Icons.arrow_back, color: Colors.black)),
+                          SizedBox(
+                            width: 12,
                           ),
-                        ),
-                        ListView.builder(
+                          Text('Search Restaurant',
+                              style: TextStyle(
+                                  fontFamily: 'Sansation',
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w700)),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(24),
+                      child: TextField(
+                        controller: textController,
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            prefixIcon: Icon(Icons.search),
+                            suffixIcon: IconButton(
+                                onPressed: textController.clear,
+                                icon: Icon(Icons.clear)),
+                            hintText: "Search Here"),
+                        onSubmitted: (value) {
+                          setState(() {
+                            query = value;
+                          });
+                        },
+                      ),
+                    ),
+                    Consumer<SearchRestaurantProvider>(
+                        builder: (context, state, _) {
+                      if (state.state == ResultState.Loading) {
+                        return Center(child: CircularProgressIndicator());
+                      } else if (state.state == ResultState.HasData) {
+                        if (query != '') {
+                          state.fetchSearchRestaurant(query);
+                        } else {
+                          state.fetchSearchRestaurant('');
+                        }
+                        return ListView.builder(
                             shrinkWrap: true,
                             physics: NeverScrollableScrollPhysics(),
                             itemCount: state.result.restaurants.length,
@@ -56,18 +91,28 @@ class _SearchPageState extends State<SearchPage> {
                               var dataRestaurant =
                                   state.result.restaurants[index];
                               return _foundRestaurant(context, dataRestaurant);
-                            })
-                      ],
-                    ),
-                  );
-                } else if (state.state == ResultState.NoData) {
-                  return Center(child: Text(state.message));
-                } else if (state.state == ResultState.Error) {
-                  return ErrorInformation();
-                } else {
-                  return Text('');
-                }
-              }))),
+                            });
+                      } else if (state.state == ResultState.NoData) {
+                        if (query != '') {
+                          state.fetchSearchRestaurant(query);
+                        } else {
+                          state.fetchSearchRestaurant('');
+                        }
+                        return NotFound();
+                      } else if (state.state == ResultState.Error) {
+                        if (query != '') {
+                          state.fetchSearchRestaurant(query);
+                        } else {
+                          state.fetchSearchRestaurant('');
+                        }
+                        return ErrorInformation();
+                      } else {
+                        return Text('');
+                      }
+                    })
+                  ],
+                ),
+              ))),
     );
   }
 }
@@ -75,7 +120,7 @@ class _SearchPageState extends State<SearchPage> {
 Widget _foundRestaurant(BuildContext context, SearchRestaurant restaurant) {
   return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, '/detail_page', arguments: restaurant);
+        Navigator.pushNamed(context, '/detail_page', arguments: restaurant.id);
       },
       child: Container(
         margin: EdgeInsets.fromLTRB(24, 0, 24, 24),

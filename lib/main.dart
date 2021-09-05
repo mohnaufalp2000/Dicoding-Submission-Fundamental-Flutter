@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:submission_1/data/model/list_restaurant.dart';
 import 'package:submission_1/ui/detail_page.dart';
 import 'package:submission_1/ui/home_page/home_page.dart';
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: SplashScreen.routeName,
