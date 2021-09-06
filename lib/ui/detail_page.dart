@@ -161,7 +161,7 @@ class _DetailPageState extends State<DetailPage> {
                         height: 6,
                       ),
                       Container(
-                          height: MediaQuery.of(context).size.height * 2 / 8,
+                          height: MediaQuery.of(context).size.height * 2 / 7,
                           child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: restaurant.menus.foods.length,
@@ -186,7 +186,7 @@ class _DetailPageState extends State<DetailPage> {
                         height: 6,
                       ),
                       Container(
-                          height: MediaQuery.of(context).size.height * 2 / 8,
+                          height: MediaQuery.of(context).size.height * 2 / 7,
                           child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: restaurant.menus.drinks.length,
