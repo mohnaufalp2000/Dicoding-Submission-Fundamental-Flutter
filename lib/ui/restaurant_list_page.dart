@@ -37,7 +37,7 @@ class _RestaurantListState extends State<RestaurantList> {
             SizedBox(
               height: 6,
             ),
-            textLight('Help you to find restaurant', 14, color: Colors.grey),
+            textLight('Help you to find restaurant', 14),
             SizedBox(
               height: 24,
             ),

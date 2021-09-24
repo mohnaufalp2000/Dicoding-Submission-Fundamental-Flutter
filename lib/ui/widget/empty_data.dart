@@ -10,7 +10,7 @@ class EmptyData extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Icon(Icons.book, size: 64, color: Color.fromRGBO(46, 71, 154, 1)),
-        textBold('Hmm...', 18, color: Color.fromRGBO(17, 31, 101, 1)),
+        textBold('Hmm...', 18),
         SizedBox(height: 12),
         Container(
           width: 250,

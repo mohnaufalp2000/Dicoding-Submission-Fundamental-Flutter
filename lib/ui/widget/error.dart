@@ -10,7 +10,7 @@ class ErrorInformation extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Icon(Icons.error, size: 64, color: Color.fromRGBO(46, 71, 154, 1)),
-        textBold('Whoops!', 18, color: Color.fromRGBO(17, 31, 101, 1)),
+        textBold('Whoops!', 18,),
         SizedBox(height: 12),
         textRegular( 'Slow or No Internet Connections', 13),
         SizedBox(height: 6),

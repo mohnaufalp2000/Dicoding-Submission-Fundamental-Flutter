@@ -39,8 +39,15 @@ Widget menusCard(BuildContext context, List<Category> category, String images) {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 12.0),
-                      child: textRegular(category[index].name, 14,
-                          color: Colors.white),
+                      child: Text(
+                        category[index].name,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white
+                        )
+                      ),
                     )
                   ],
                 ),

@@ -2,7 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:submission_3/main.dart';
+import 'package:submission_3/ui/detail_page.dart';
 import 'package:submission_3/ui/home_page.dart';
+import 'package:submission_3/utils/background_service.dart';
+import 'package:submission_3/utils/notification_helper.dart';
 
 class SplashScreen extends StatefulWidget {
   static const routeName = '/splash_screen';
@@ -12,10 +15,19 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final NotificationHelper _notificationHelper = NotificationHelper();
+
   @override
   void initState() {
     super.initState();
-    splashScreen();
+    _notificationHelper
+        .configureSelectNotificationsSubject(DetailPage.routeName);
+  }
+
+  @override
+  void dispose() {
+    selectNotificationSubject.close();
+    super.dispose();
   }
 
   splashScreen() {
@@ -27,6 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    splashScreen();
     return Scaffold(body: Center(child: Text('Ini Restaurant')));
   }
 }

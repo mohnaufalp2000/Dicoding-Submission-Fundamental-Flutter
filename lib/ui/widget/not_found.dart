@@ -10,7 +10,7 @@ class NotFound extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Icon(Icons.error, size: 64, color: Color.fromRGBO(46, 71, 154, 1)),
-        textBold('Oh No!', 18, color: Color.fromRGBO(17, 31, 101, 1)),
+        textBold('Oh No!', 18),
         SizedBox(height: 12),
         Container(
           width: 250,
