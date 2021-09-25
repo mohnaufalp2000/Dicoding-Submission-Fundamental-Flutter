@@ -4,7 +4,10 @@ import 'package:submission_3/data/api/api_service.dart';
 import 'package:submission_3/data/provider/restaurant_list_provider.dart';
 import 'package:submission_3/data/provider/search_restaurant_provider.dart';
 import 'package:submission_3/res/widget.dart';
+import 'package:submission_3/ui/detail_page.dart';
 import 'package:submission_3/ui/widget/restaurant_card.dart';
+import 'package:submission_3/utils/background_service.dart';
+import 'package:submission_3/utils/notification_helper.dart';
 import 'package:submission_3/utils/result_state.dart';
 
 class RestaurantList extends StatefulWidget {

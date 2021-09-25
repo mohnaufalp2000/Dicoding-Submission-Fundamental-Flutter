@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:submission_3/data/model/restaurant_model.dart';
 import 'package:submission_3/res/navigation.dart';
@@ -65,11 +66,11 @@ class NotificationHelper {
         payload: json.encode(restaurantResult.toJson()));
   }
 
-  void configureSelectNotificationsSubject(String route) {
+  void configureSelectNotificationsSubject(BuildContext context, String route) {
     selectNotificationSubject.stream.listen((String payload) async {
       var data = RestaurantResult.fromJson(json.decode(payload));
       var restaurant = data.restaurants[0];
-      Navigation.intentWithData(route, restaurant.id);
+      await Navigator.pushNamed(context,route, arguments: restaurant.id);
     });
   }
 }

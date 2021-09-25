@@ -41,7 +41,6 @@ class MyApp extends StatelessWidget {
         builder: (context, provider, child) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            navigatorKey: navigatorKey,
             title: 'Restaurant App',
             theme: provider.themeData,
             initialRoute: SplashScreen.routeName,

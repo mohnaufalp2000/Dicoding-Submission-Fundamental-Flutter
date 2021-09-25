@@ -15,19 +15,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  final NotificationHelper _notificationHelper = NotificationHelper();
-
+  
   @override
   void initState() {
     super.initState();
-    _notificationHelper
-        .configureSelectNotificationsSubject(DetailPage.routeName);
-  }
-
-  @override
-  void dispose() {
-    selectNotificationSubject.close();
-    super.dispose();
+    splashScreen();
   }
 
   splashScreen() {
@@ -39,7 +31,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    splashScreen();
     return Scaffold(body: Center(child: Text('Ini Restaurant')));
   }
 }

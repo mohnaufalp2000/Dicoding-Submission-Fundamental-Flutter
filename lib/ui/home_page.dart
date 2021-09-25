@@ -15,7 +15,22 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int bottomNavIndex = 0;
+    final NotificationHelper _notificationHelper = NotificationHelper();
+  final BackgroundService _backgroundService = BackgroundService();
 
+  @override
+  void initState() {
+    super.initState();
+    port.listen((_) async => await _backgroundService.someTask());
+    _notificationHelper.configureSelectNotificationsSubject(
+        context, DetailPage.routeName);
+  }
+
+  @override
+  void dispose() {
+    selectNotificationSubject.close();
+    super.dispose();
+  }
 
 
   @override
