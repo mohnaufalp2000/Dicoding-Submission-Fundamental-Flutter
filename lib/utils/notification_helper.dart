@@ -1,24 +1,21 @@
 import 'dart:convert';
 import 'dart:math';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:submission_3/data/model/restaurant_model.dart';
 import 'package:submission_3/res/navigation.dart';
-import 'package:submission_3/ui/detail_page.dart';
 
 final selectNotificationSubject = BehaviorSubject<String>();
 
 class NotificationHelper {
   static NotificationHelper? _instance;
-  int random = 0;
 
   NotificationHelper._internal() {
     _instance = this;
   }
 
   factory NotificationHelper() => _instance ?? NotificationHelper._internal();
+  late int random;
 
   Future<void> initNotifications(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin) async {
@@ -58,19 +55,18 @@ class NotificationHelper {
     var titleNotification = "<b>Find Restaurant</b>";
     var restaurantLength = restaurantResult.restaurants.length;
     random = Random().nextInt(restaurantLength - 1);
-    print(random);
-    var titleRestaurant = restaurantResult.restaurants[0].name;
+    var titleRestaurant = restaurantResult.restaurants[random].name;
 
     await flutterLocalNotificationsPlugin.show(
         0, titleNotification, titleRestaurant, platformChannelSpecifics,
         payload: json.encode(restaurantResult.toJson()));
   }
 
-  void configureSelectNotificationsSubject(BuildContext context, String route) {
+  void configureSelectNotificationsSubject(String route) {
     selectNotificationSubject.stream.listen((String payload) async {
       var data = RestaurantResult.fromJson(json.decode(payload));
-      var restaurant = data.restaurants[0];
-      await Navigator.pushNamed(context,route, arguments: restaurant.id);
+      var restaurant = data.restaurants[random];
+      Navigation.intentWithData(route, restaurant.id);
     });
   }
 }

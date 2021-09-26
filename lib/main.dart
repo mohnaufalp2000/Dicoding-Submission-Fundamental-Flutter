@@ -8,7 +8,6 @@ import 'package:submission_3/data/provider/preferences_provider.dart';
 import 'package:submission_3/items/providers.dart';
 import 'package:submission_3/items/routes.dart';
 import 'package:submission_3/res/navigation.dart';
-import 'package:submission_3/ui/home_page.dart';
 import 'package:submission_3/ui/splash_screen.dart';
 import 'package:submission_3/utils/background_service.dart';
 import 'package:submission_3/utils/notification_helper.dart';
@@ -40,6 +39,7 @@ class MyApp extends StatelessWidget {
       child: Consumer<PreferencesProvider>(
         builder: (context, provider, child) {
           return MaterialApp(
+            navigatorKey: navigatorKey,
             debugShowCheckedModeBanner: false,
             title: 'Restaurant App',
             theme: provider.themeData,

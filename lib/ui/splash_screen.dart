@@ -1,11 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:submission_3/main.dart';
-import 'package:submission_3/ui/detail_page.dart';
 import 'package:submission_3/ui/home_page.dart';
-import 'package:submission_3/utils/background_service.dart';
-import 'package:submission_3/utils/notification_helper.dart';
 
 class SplashScreen extends StatefulWidget {
   static const routeName = '/splash_screen';
@@ -31,6 +27,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('Ini Restaurant')));
+    return Scaffold(body: Center(child: Icon(Icons.food_bank, color: Colors.amber, size: 128,)));
   }
 }

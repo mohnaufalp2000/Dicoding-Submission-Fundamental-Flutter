@@ -7,6 +7,6 @@ var routes = {
   SplashScreen.routeName : (context) => SplashScreen(),
   HomePage.routeName: (context) => HomePage(),
   DetailPage.routeName: (context) => DetailPage(
-    ModalRoute.of(context)?.settings.arguments as String
+    id: ModalRoute.of(context)?.settings.arguments as String
   )
 };

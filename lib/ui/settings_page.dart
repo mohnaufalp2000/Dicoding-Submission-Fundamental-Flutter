@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:submission_3/data/provider/preferences_provider.dart';
 import 'package:submission_3/data/provider/scheduling_provider.dart';
 import 'package:submission_3/res/widget.dart';
-import 'package:submission_3/ui/widget/custom_dialog.dart';
 
 class SettingsPage extends StatelessWidget {
   @override

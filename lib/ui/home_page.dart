@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     port.listen((_) async => await _backgroundService.someTask());
     _notificationHelper.configureSelectNotificationsSubject(
-        context, DetailPage.routeName);
+        DetailPage.routeName);
   }
 
   @override

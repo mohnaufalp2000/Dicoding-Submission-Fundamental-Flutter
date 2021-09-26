@@ -24,7 +24,7 @@ class RestaurantCard extends StatelessWidget {
             // Intent Detail Page
             return InkWell(
               onTap: () =>
-               Navigator.pushNamed(context, DetailPage.routeName, arguments: restaurant.id),
+               Navigation.intentWithData(DetailPage.routeName, restaurant.id),
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 6),
                 child: Row(
