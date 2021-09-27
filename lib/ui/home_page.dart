@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:submission_3/ui/detail_page.dart';
 import 'package:submission_3/ui/favorite_page.dart';
 import 'package:submission_3/ui/restaurant_list_page.dart';
+import 'package:submission_3/ui/search_page.dart';
 import 'package:submission_3/ui/settings_page.dart';
 import 'package:submission_3/utils/background_service.dart';
 import 'package:submission_3/utils/notification_helper.dart';
@@ -40,6 +41,8 @@ class _HomePageState extends State<HomePage> {
           // Page
           ? RestaurantList()
           : bottomNavIndex == 1
+              ? SearchPage()
+              : bottomNavIndex == 2
               ? FavoritePage()
               : SettingsPage(),
 
@@ -49,6 +52,7 @@ class _HomePageState extends State<HomePage> {
         currentIndex: bottomNavIndex,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite), label: 'Favorite'),
           BottomNavigationBarItem(

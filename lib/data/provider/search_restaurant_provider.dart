@@ -24,6 +24,7 @@ class SearchRestaurantProvider extends ChangeNotifier {
   Future<dynamic> fetchFoundRestaurant(String query) async {
     try {
       _state = ResultState.Loading;
+      notifyListeners();
       final foundRestaurant = await apiService.searchRestaurant(query);
       if (foundRestaurant.restaurants.isEmpty) {
         _state = ResultState.NoData;
