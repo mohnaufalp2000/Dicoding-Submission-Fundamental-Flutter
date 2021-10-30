@@ -48,7 +48,7 @@ https://github.com/mohnaufalp2000/Dicoding-Submission-Fundamental-Flutter
 
 ## Resource
 
-- [Belajar Fundamental Aplikasi Flutter](https://www.dicoding.com/academies/159)
+- [Belajar Fundamental Aplikasi Flutter](https://www.dicoding.com/academies/195)
 
 ## Author
 
