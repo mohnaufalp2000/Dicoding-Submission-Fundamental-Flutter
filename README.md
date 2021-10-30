@@ -39,7 +39,7 @@ This project is created for achieve the requirement to graduate from "Belajar Fu
 
 1. Clone this repository and open it with your IDE (Android Studio or Visual Studio Code)
 ```
-https://github.com/mohnaufalp2000/Dicoding-Submission-Flutter-Pemula.git
+https://github.com/mohnaufalp2000/Dicoding-Submission-Fundamental-Flutter
 ```
 
 2. Build this project from your IDE
